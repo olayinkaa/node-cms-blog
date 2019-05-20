@@ -41,12 +41,11 @@ app.set('view engine','handlebars');
 
 
 //routes
-app.get('/',(req,res)=>{
+const defaultRoutes = require('./routes/defaultRoutes');
+app.use('/',defaultRoutes);
 
-    res.render('default/index');
-
-});
-
+const adminRoutes = require('./routes/adminRoutes')
+app.use('/admin',adminRoutes);
 
 
 
