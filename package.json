@@ -1,0 +1,19 @@
+{
+  "name": "node_cms",
+  "version": "1.0.0",
+  "description": "A blog cms project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "Ibrahim Olayinka",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.0",
+    "express-handlebars": "^3.1.0",
+    "jquery": "^3.4.1",
+    "mongoose": "^5.5.9",
+    "nodemon": "^1.19.0"
+  }
+}
