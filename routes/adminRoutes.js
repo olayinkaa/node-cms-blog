@@ -4,7 +4,7 @@ const router = express.Router();
 const adminController = require('../controllers/adminController');
 
 
-router.all('/*',(req,res,next)=>{
+router.all('/*',(req,res,next) =>{
 
         req.app.locals.layouts = 'admin';
         next();
