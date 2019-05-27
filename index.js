@@ -41,15 +41,15 @@ app.set('view engine','handlebars');
 
 
 //routes
-const defaultRoutes = require('./routes/defaultRoutes');
-app.use('/',defaultRoutes);
+const defaultRoute = require('./routes/defaultRoutes');
+app.use('/',defaultRoute);
 
-const adminRoutes = require('./routes/adminRoutes')
-app.use('/admin',adminRoutes);
+const adminRoute = require('./routes/adminRoutes')
+app.use('/admin',adminRoute);
 
 
 
 // server started
 app.listen(PORT,()=>{
-    console.log(`server is running on ports sample-branch ${PORT}`);
+    console.log(`server is running on ports ${PORT}`);
 });

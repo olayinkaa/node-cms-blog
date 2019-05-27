@@ -6,7 +6,7 @@ const defaultController = require('../controllers/defaultController');
 
 router.all('/*',(req,res,next)=>{
 
-    req.app.locals.layouts = 'default';
+    req.app.locals.layout = 'default';
     next();
 
 });

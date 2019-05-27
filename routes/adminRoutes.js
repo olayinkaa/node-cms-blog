@@ -6,10 +6,12 @@ const adminController = require('../controllers/adminController');
 
 router.all('/*',(req,res,next) =>{
 
-        req.app.locals.layouts = 'admin';
+        req.app.locals.layout = 'admin';
         next();
 
 });
+
+
 
 
 
