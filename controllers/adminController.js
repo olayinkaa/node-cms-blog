@@ -12,9 +12,10 @@ module.exports = {
 
         res.send("this is submit post")
     },
+    
     createPost: (req,res)=>{
 
-        res.send("this is create page")
+        res.render('admin/posts/create')
     }
 
 }
