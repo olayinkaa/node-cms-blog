@@ -10,8 +10,10 @@
   "author": "Ibrahim Olayinka",
   "license": "ISC",
   "dependencies": {
+    "connect-flash": "^0.1.1",
     "express": "^4.17.0",
     "express-handlebars": "^3.1.0",
+    "express-session": "^1.16.1",
     "jquery": "^3.4.1",
     "mongoose": "^5.5.9",
     "nodemon": "^1.19.0"

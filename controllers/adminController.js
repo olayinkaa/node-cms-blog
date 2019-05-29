@@ -1,4 +1,9 @@
+// const Post = require('../models/PostModel').Post;
+const Post = require('../models/PostModel');
+
+
 module.exports = {
+//start bracket
 
     index: (req,res)=>{
 
@@ -6,11 +11,27 @@ module.exports = {
     },
     getPosts: (req,res)=>{
 
-        res.send("this is posts page")
+        res.render("admin/posts/index")
     },
+
     submitPost: (req,res)=>{
 
-        res.send("this is submit post")
+        const newPost = new Post({
+            title:req.body.title,
+            description:req.body.description,
+            status:req.body.status
+        })
+
+        newPost.save()
+                .then(post=>{
+                    console.log(post);
+                    req.flash('success-message','Post Created successfully')
+                    res.redirect('/admin/posts')
+                })
+                .catch(err=>{
+                    console.log("error in submission"+err)
+                });
+
     },
     
     createPost: (req,res)=>{
@@ -18,4 +39,6 @@ module.exports = {
         res.render('admin/posts/create')
     }
 
+
+//-----------------------end bracket
 }

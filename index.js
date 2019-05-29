@@ -5,6 +5,9 @@ const path = require('path');
 const hbs = require('express-handlebars');
 const {mongoDBUrl,PORT} = require('./config/configuration');
 const app = new express();
+const {globalVariables} = require('./config/configuration');
+const flash = require('connect-flash');
+const session = require('express-session');
 
 
 //configure mongoose to connect MongoDB
@@ -23,6 +26,18 @@ app.use(express.urlencoded({extended: true}));
 
 //public asset folder setup
 app.use(express.static(path.join(__dirname,'public')));
+
+
+// flash and sesssion
+app.use(session({
+    secret:'anysecret',
+    saveUninitialized:true,
+    resave: true
+}));
+
+app.use(flash());
+app.use(globalVariables);
+
 
 
 // set up view engine to use handlebars

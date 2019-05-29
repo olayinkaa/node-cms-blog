@@ -30,15 +30,14 @@ router.route('/')
     .get(adminController.index)
 
 
-router.route('/post')
+router.route('/posts')
         .get(adminController.getPosts)
-        .post(adminController.submitPost)
 
         
 router.route('/post/create')
         .get(adminController.createPost)
-
-    
+        .post(adminController.submitPost)
+        
 
 
 
