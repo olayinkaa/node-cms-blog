@@ -11,7 +11,15 @@ module.exports = {
     },
     getPosts: (req,res)=>{
 
-        res.render("admin/posts/index")
+        Post.find()
+            .then(posts=>{
+                res.render('admin/posts/index',{
+                    posts:posts
+                })
+            })
+            .catch(err=>{
+                console.log(err)
+            })
     },
 
     submitPost: (req,res)=>{
@@ -29,7 +37,7 @@ module.exports = {
                     res.redirect('/admin/posts')
                 })
                 .catch(err=>{
-                    console.log("error in submission"+err)
+                    console.log("error in submission "+err)
                 });
 
     },
