@@ -62,6 +62,18 @@ module.exports = {
 
                     console.log(err)
                 })
+    },
+
+    deletePost: (req,res)=>{
+        const id = req.params.id
+
+        Post.findByIdAndDelete(id)
+                .then(deletePost=>{
+
+                    req.flash('error-message',`The post ${deletePost.title} has been deleted`);
+                    res.redirect('/admin/posts')
+
+                });
     }
 
 

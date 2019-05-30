@@ -43,7 +43,8 @@ router.route('/post/edit/:id')
         .get(adminController.editPost)
         // .post(adminController.submitPost)
         
-
+router.route('/post/delete/:id')
+        .delete(adminController.deletePost)
 
 
 module.exports = router;

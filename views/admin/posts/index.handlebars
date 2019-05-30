@@ -28,8 +28,11 @@
                                 <td>{{description}}</td>
                                 <td>{{status}}</td>
                                 <td>{{allowComments}}</td>
-                                <td>
-                                    <a href="/admin/post/edit/{{_id}}" class="btn btn-warning">Edit</a>
+                                <td class="d-flex">
+                                    <a href="/admin/post/edit/{{_id}}" class="btn btn-warning mr-2">Edit</a>
+                                    <form action="/admin/post/delete/{{_id}}?newMethod=DELETE" method="POST">
+                                        <button class="btn btn-danger" type="submit">Delete</button>
+                                    </form>
                                 </td>
                                 {{!-- <td>{{allowComments}}</td> --}}
                             </tr>

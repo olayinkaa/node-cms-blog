@@ -8,6 +8,7 @@ const app = new express();
 const {globalVariables} = require('./config/configuration');
 const flash = require('connect-flash');
 const session = require('express-session');
+const methodOverride = require('method-override');
 
 
 var Handlebars = require('handlebars');
@@ -16,6 +17,9 @@ Handlebars.registerHelper("inc", function(value, options)
 {
     return parseInt(value) + 1;
 });
+
+//method override middleware
+app.use(methodOverride('newMethod'));
 
 //configure mongoose to connect MongoDB
 
