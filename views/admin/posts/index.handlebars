@@ -2,7 +2,7 @@
      <div class="text-center d-sm-flex align-items-center justify-content-between mb-4 ">
                
                 <h1 class="h3 mb-0 text-gray-800">ALL POSTS</h1>
-                {{!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> --}}
+                <a href="/admin/post/create" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> ADD NEW POST</a>
     </div>
     <div class="row">
         <div class="col-md-12">
@@ -21,7 +21,7 @@
                         <tbody>
                             {{#each posts}}
                             <tr>
-                                <th scope="row">{{_id}}</th>
+                                <th scope="row">{{inc @index}}</th>
                                 <td>{{title}}</td>
                                 <td>{{description}}</td>
                                 <td>{{status}}</td>

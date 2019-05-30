@@ -10,6 +10,13 @@ const flash = require('connect-flash');
 const session = require('express-session');
 
 
+var Handlebars = require('handlebars');
+
+Handlebars.registerHelper("inc", function(value, options)
+{
+    return parseInt(value) + 1;
+});
+
 //configure mongoose to connect MongoDB
 
 mongoose.connect(mongoDBUrl,{useNewUrlParser:true})
