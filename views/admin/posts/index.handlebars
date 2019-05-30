@@ -15,7 +15,8 @@
                                 <th scope="col">Title</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">Status</th>
-                                {{!-- <th scope="col">Allow Comments</th> --}}
+                                <th scope="col">Comments Allowed</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -25,6 +26,10 @@
                                 <td>{{title}}</td>
                                 <td>{{description}}</td>
                                 <td>{{status}}</td>
+                                <td>{{allowComments}}</td>
+                                <td>
+                                    <a href="/admin/post/edit/{{_id}}" class="btn btn-warning">Edit</a>
+                                </td>
                                 {{!-- <td>{{allowComments}}</td> --}}
                             </tr>
                             {{/each}}

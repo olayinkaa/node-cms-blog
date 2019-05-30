@@ -24,10 +24,14 @@ module.exports = {
 
     submitPost: (req,res)=>{
 
+        //for check box which give value of ON/OFF
+        const commentsAllowed = req.body.allowComments? true : false;
+
         const newPost = new Post({
             title:req.body.title,
             description:req.body.description,
-            status:req.body.status
+            status:req.body.status,
+            allowComments:commentsAllowed
         })
 
         newPost.save()
@@ -45,6 +49,19 @@ module.exports = {
     createPost: (req,res)=>{
 
         res.render('admin/posts/create')
+    },
+
+    editPost: (req,res)=>{
+
+        const id = req.params.id
+        Post.findById(id)
+                .then(post=>{
+                        res.render('admin/posts/edit',{post:post});
+                })
+                .catch(err=>{
+
+                    console.log(err)
+                })
     }
 
 
