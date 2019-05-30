@@ -1,0 +1,66 @@
+<div class="container mb-5">
+    <div class="text-center d-sm-flex align-items-center justify-content-between mb-4 ">
+               
+                <h1 class="h3 mb-0 text-gray-800">ALL CATEGORY</h1>
+                <button type="button" data-toggle="modal" data-target="#categoryModal" id="addCategory" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                    <i class="fas fa-plus fa-sm text-white-50"></i> ADD NEW CATEGORY
+                </button>
+    </div>
+    <div class="row">
+        <div class="col-md-9 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                {{!-- <th scope="col">#</th> --}}
+                                <th scope="col">Title</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="category-list">
+                         {{#each categories}}
+                            <tr>
+                                {{!-- <th scope="row">{{inc @index}}</th> --}}
+                                <td>{{title}}</td>
+                                <td class="d-flex">
+                                    <a href="/admin/category/edit/{{_id}}" class="btn btn-warning mr-2">Edit</a>
+                                    <form action="/admin/category/delete/{{_id}}?newMethod=DELETE" method="POST">
+                                        <button class="btn btn-danger" type="submit">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- MODAL FORM FOR CATEGORY --}}
+<div class="modal fade" id="categoryModal" tabindex="-1" role="dialog" aria-labelledby="categoryModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">NEW CATEGORY</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form action="" method="POST" id="categoryForm">
+                <div class="form-group">
+                    {{!-- <label for="title">Title</label> --}}
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Enter the title">
+                </div>            
+                <button type="submit" id="create-category-button" class="btn btn-primary btn-block">ADD</button>
+        </form>
+      </div>
+      {{!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div> --}}
+    </div>
+  </div>
+</div>

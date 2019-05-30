@@ -1,6 +1,9 @@
 // const Post = require('../models/PostModel').Post;
 const Post = require('../models/PostModel');
 
+// const Category = require('../models/CategoryModel').Category
+const Category = require('../models/CategoryModel')
+
 
 module.exports = {
 //start bracket
@@ -36,7 +39,7 @@ module.exports = {
 
         newPost.save()
                 .then(post=>{
-                    console.log(post);
+                    // console.log(post);
                     req.flash('success-message','Post Created successfully')
                     res.redirect('/admin/posts')
                 })
@@ -74,6 +77,38 @@ module.exports = {
                     res.redirect('/admin/posts')
 
                 });
+    },
+
+
+
+// ADMIN CATEGORIES METHODS
+
+    getCategories: (req,res)=>{
+
+        Category.find()
+                .then(cats=>{
+
+                    res.render('admin/category/index',{categories:cats});
+                    
+                })
+
+    },
+
+    postCategory: (req,res) => {
+
+            var categoryName = req.body.name;
+
+            if(categoryName)
+            {
+                const newCategory = new Category({
+                    title: categoryName
+                })
+
+                newCategory.save()
+                            .then(category=>{
+                                res.status(200).json(category);
+                            })
+            }
     }
 
 
