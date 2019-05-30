@@ -38,6 +38,11 @@ router.route('/post/create')
         .get(adminController.createPost)
         .post(adminController.submitPost)
         
+        
+router.route('/post/edit/:id')
+        .get(adminController.editPost)
+        // .post(adminController.submitPost)
+        
 
 
 
