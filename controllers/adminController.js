@@ -49,9 +49,11 @@ module.exports = {
 
     },
     
-    createPost: (req,res)=>{
+    createPost: async (req,res)=>{
 
-        res.render('admin/posts/create')
+        const categories = await Category.find();
+
+        res.render('admin/posts/create',{categories:categories})
     },
 
     editPost: (req,res)=>{
