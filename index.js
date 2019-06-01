@@ -9,6 +9,8 @@ const {globalVariables} = require('./config/configuration');
 const flash = require('connect-flash');
 const session = require('express-session');
 const methodOverride = require('method-override');
+const {selectOption} = require('./config/customFunctions');
+
 
 
 var Handlebars = require('handlebars');
@@ -18,7 +20,7 @@ Handlebars.registerHelper("inc", function(value, options)
     return parseInt(value) + 1;
 });
 
-//method override middleware
+//method override middleware for delete and update HTTP request
 app.use(methodOverride('newMethod'));
 
 //configure mongoose to connect MongoDB
@@ -59,7 +61,7 @@ app.set('view engine','hbs');
 
 */
 //set up second method with the default extension name
-app.engine('handlebars', hbs({defaultLayout: 'default'}));
+app.engine('handlebars', hbs({defaultLayout: 'default',helpers:{select:selectOption}}));
 app.set('view engine','handlebars');
 
 

@@ -3,9 +3,9 @@ $(document).ready(function(){
 
     setTimeout(()=>{
 
-        $('.auto-hide').slideUp(3000)
+        $('.auto-hide').slideUp(1000)
 
-    },2000);
+    },5000);
 
 
 $('#addCategory').click(function(){

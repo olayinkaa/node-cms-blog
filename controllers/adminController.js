@@ -15,6 +15,7 @@ module.exports = {
     getPosts: (req,res)=>{
 
         Post.find()
+            .populate('category')
             .then(posts=>{
                 res.render('admin/posts/index',{
                     posts:posts
@@ -34,7 +35,8 @@ module.exports = {
             title:req.body.title,
             description:req.body.description,
             status:req.body.status,
-            allowComments:commentsAllowed
+            allowComments:commentsAllowed,
+            category:req.body.category
         })
 
         newPost.save()
@@ -56,12 +58,18 @@ module.exports = {
         res.render('admin/posts/create',{categories:categories})
     },
 
+
+
     editPost: (req,res)=>{
 
         const id = req.params.id
         Post.findById(id)
                 .then(post=>{
-                        res.render('admin/posts/edit',{post:post});
+                    Category.find().then(cats=>{
+
+                        res.render('admin/posts/edit',{post:post, categories:cats});
+
+                    })
                 })
                 .catch(err=>{
 
@@ -81,6 +89,27 @@ module.exports = {
                 });
     },
 
+
+    updatePost: (req,res)=>{
+
+        const commentsAllowed = req.body.allowComments? true : false;
+        const id = req.params.id
+        Post.findById(id).then(post=>{
+
+            post.title = req.body.title,
+            post.description = req.body.description,
+            post.status=req.body.status,
+            post.allowComments=commentsAllowed,
+            post.category=req.body.category
+
+            post.save().then(updatedPost=>{
+                req.flash('success-message',`The post "${updatedPost.title}" has been updated`)
+                res.redirect('/admin/posts')
+            });
+
+        });
+
+    },
 
 
 // ADMIN CATEGORIES METHODS

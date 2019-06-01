@@ -16,6 +16,7 @@
                                 <th scope="col">Title</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">Status</th>
+                                <th scope="col">Category</th>
                                 <th scope="col">Comments Allowed</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -27,6 +28,7 @@
                                 <td>{{title}}</td>
                                 <td>{{description}}</td>
                                 <td>{{status}}</td>
+                                <td>{{category.title}}</td>
                                 <td>{{allowComments}}</td>
                                 <td class="d-flex">
                                     <a href="/admin/post/edit/{{_id}}" class="btn btn-warning mr-2">Edit</a>
