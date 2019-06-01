@@ -75,9 +75,7 @@ $('#addCategory').click(function(){
 // $(document).on('click','.editbutton',function(){
 
 //             var id = $(this).data('value');
-//             $('#categoryModalEdit').modal('show');
-
-
+                        
 //             $.ajax({
 
 //                     url: `/admin/category/edit/${id}`,

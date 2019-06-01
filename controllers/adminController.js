@@ -158,7 +158,7 @@ module.exports = {
             const id = req.params.id;
             const cat = await Category.findById(id);
 
-            res.render('admin/category/index',{cat:cat})
+            res.render('admin/category/edit',{cat:cat})
         
         
     }
