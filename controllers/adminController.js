@@ -78,13 +78,14 @@ module.exports = {
     },
 
     deletePost: (req,res)=>{
-        const id = req.params.id
+
+        const id = req.params.id;
 
         Post.findByIdAndDelete(id)
                 .then(deletePost=>{
 
                     req.flash('error-message',`The post ${deletePost.title} has been deleted`);
-                    res.redirect('/admin/posts')
+                    res.redirect('/admin/posts');
 
                 });
     },
@@ -140,6 +141,26 @@ module.exports = {
                                 res.status(200).json(category);
                             })
             }
+    },
+
+    editCategoriesGetRoute: async (req,res)=>{
+
+            // const catId = req.params.id;
+
+            // const cats = await Category.find();
+
+            // Category.findById(catId).then(cat=>{
+
+            //     res.render('admin/category/edit',{category:cat,categories:cats})
+
+            // })
+
+            const id = req.params.id;
+            const cat = await Category.findById(id);
+
+            res.render('admin/category/index',{cat:cat})
+        
+        
     }
 
 

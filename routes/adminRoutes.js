@@ -53,6 +53,8 @@ router.route('/category')
         .get(adminController.getCategories)
         .post(adminController.postCategory)
 
+router.route('/category/edit/:id')
+        .get(adminController.editCategoriesGetRoute)
 
 // router.route('/category/create')
 //         .post(adminController.createCategory)

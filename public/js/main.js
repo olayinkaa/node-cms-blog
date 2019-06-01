@@ -14,7 +14,7 @@ $('#addCategory').click(function(){
     $('#categoryForm')[0].reset();
 })
 
-
+//----------------------------------------------------------------------------------------
   $('#create-category-button').on('click',function(e){
       e.preventDefault();
       var data = $('#title').val();
@@ -61,6 +61,7 @@ $('#addCategory').click(function(){
 
             $('.category-list').append(html);                
 
+                  
           }
 
           
@@ -68,8 +69,33 @@ $('#addCategory').click(function(){
 
   });
 
+  
+//---------------------------------------------------------------------------------------------------------------
+
+// $(document).on('click','.editbutton',function(){
+
+//             var id = $(this).data('value');
+//             $('#categoryModalEdit').modal('show');
 
 
-  })
+//             $.ajax({
+
+//                     url: `/admin/category/edit/${id}`,
+//                     type:"POST",
+//                     data:{idd:id},
+//                     success: function(data){
+
+
+
+//                     }
+
+
+//             })
+// })
+
+/////////////////////////////////////////////////////////////////////////////////
+
+
+})
 
   //

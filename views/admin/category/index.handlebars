@@ -24,7 +24,7 @@
                                 {{!-- <th scope="row">{{inc @index}}</th> --}}
                                 <td>{{title}}</td>
                                 <td class="d-flex">
-                                    <a href="/admin/category/edit/{{_id}}" class="btn btn-warning mr-2">Edit</a>
+                                    <a href="/admin/category/edit/{{_id}}" data-toggle="modal" data-target="#categoryModalEdit" class="btn btn-warning mr-2 ">Edit</a>
                                     <form action="/admin/category/delete/{{_id}}?newMethod=DELETE" method="POST">
                                         <button class="btn btn-danger" type="submit">Delete</button>    
                                     </form>
@@ -61,6 +61,28 @@
       {{!-- <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div> --}}
+    </div>
+  </div>
+</div>
+
+{{!-- MODAL FORM FOR CATEGORY EDIT--}}
+<div class="modal fade" id="categoryModalEdit" tabindex="-1" role="dialog" aria-labelledby="categoryModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">EDIT CATEGORY</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form action="" method="POST" id="categoryFormEdit">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="title" name="title" value="{{title}}" >
+                </div>            
+                <button type="submit" id="create-category-button" class="btn btn-primary btn-block">ADD</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>
