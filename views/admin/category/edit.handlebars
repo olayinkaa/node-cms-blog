@@ -8,11 +8,11 @@
         <div class="col-md-6 mx-auto">
             <div class="card">
                 <div class="card-body">
-                      <form action="" method="POST" id="categoryFormEdit">
+                      <form action="/admin/category/edit/{{cat._id}}?newMethod=PUT" method="POST" >
                             <div class="form-group">
                                 <input type="text" class="form-control" id="title" name="title" value="{{cat.title}}" >
                             </div>            
-                            <button type="submit" id="create-category-button" class="btn btn-primary btn-block">UPDATE</button>
+                            <button type="submit"  class="btn btn-primary btn-block">UPDATE</button>
                         </form>
                 </div>
             </div>

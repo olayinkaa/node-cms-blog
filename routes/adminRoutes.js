@@ -53,11 +53,13 @@ router.route('/category')
         .get(adminController.getCategories)
         .post(adminController.postCategory)
 
+router.route('/category/delete/:id')
+        .delete(adminController.deleteCategory)
+
 router.route('/category/edit/:id')
         .get(adminController.editCategoriesGetRoute)
+        .put(adminController.editCategoriesUpdateRoute)
 
-// router.route('/category/create')
-//         .post(adminController.createCategory)
 
 
 

@@ -14,7 +14,9 @@ module.exports = {
     },
     getPosts: (req,res)=>{
 
-        Post.find()
+        mysort = {CreationDate:-1}
+
+        Post.find().sort(mysort)
             .populate('category')
             .then(posts=>{
                 res.render('admin/posts/index',{
@@ -116,8 +118,8 @@ module.exports = {
 // ADMIN CATEGORIES METHODS
 
     getCategories: (req,res)=>{
-
-        Category.find()
+        var mysort = {title:1};
+        Category.find().sort(mysort)
                 .then(cats=>{
 
                     res.render('admin/category/index',{categories:cats});
@@ -161,6 +163,28 @@ module.exports = {
             res.render('admin/category/edit',{cat:cat})
         
         
+    },
+
+    editCategoriesUpdateRoute: (req,res)=>{
+
+            var catId = req.params.id;
+
+            Category.findById(catId)
+                    .then(cat =>  {
+
+                cat.title = req.body.title
+                cat.save().then(updatedCat=>{
+                    req.flash('success-message',`The Category "${updatedCat.title}" has been updated`);
+                    res.redirect('/admin/category');
+                })
+            })
+
+    },
+
+    deleteCategory: (req,res)=>{
+
+
+
     }
 
 
