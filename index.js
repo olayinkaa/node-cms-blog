@@ -3,17 +3,18 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const hbs = require('express-handlebars');
-const {mongoDBUrl,PORT} = require('./config/configuration');
+const {mongoDBUrl,PORT,globalVariables} = require('./config/configuration');
 const app = new express();
-const {globalVariables} = require('./config/configuration');
+// const {globalVariables} = require('./config/configuration');
 const flash = require('connect-flash');
 const session = require('express-session');
 const methodOverride = require('method-override');
 const {selectOption} = require('./config/customFunctions');
 
-
-
 var Handlebars = require('handlebars');
+
+// date format
+// hbs.registerHelper('dateFormat', require('handlebars-dateformat'));
 
 Handlebars.registerHelper("inc", function(value, options)
 {
