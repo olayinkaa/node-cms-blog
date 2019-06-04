@@ -3,6 +3,9 @@ const User = require('../models/UserModel');
 const Category = require('../models/CategoryModel');
 const bcrypt = require('bcryptjs');
 
+// const { check, validationResult } = require('express-validator/check');
+// const { sanitizeBody } = require('express-validator/filter');
+
 
 
 module.exports = {
@@ -31,9 +34,35 @@ module.exports = {
         res.render('default/register')
     },
 
+
     registerPost: (req,res)=>{
+
+
+        // check('surname')
+        //     .isLength({ min: 1 })
+        //     .withMessage('Message is required')
+        //     .trim(),
+        // check('firstname')
+        //     .isEmail()
+        //     .withMessage('That email doesn‘t look right')
+        //     .trim()
+        //     .normalizeEmail()
+            
+        // const errors = validationResult(req);
+        
+        //  if(errors){
+
+        //      res.render('default/register', {
+        //         data: req.body,
+        //         errors: errors.mapped()
+        //       })
+        //  }  
+
+  
+        
+
         let errors = [];
- ///////////////////////////////////////
+        ///////////////////////////////////////
         if(!req.body.surname)
         {
             errors.push({message:'Surname field is required'})
@@ -50,7 +79,7 @@ module.exports = {
         {
             errors.push({message:'Password do not match'})
         }
-//////////////////////////////////////
+        //////////////////////////////////////
         if(errors.length>0){
 
             res.render('default/register',{
@@ -59,6 +88,7 @@ module.exports = {
                 firstname: req.body.firstname,
                 email: req.body.email
             });
+
         }
         else
         {
@@ -89,5 +119,16 @@ module.exports = {
         }
 ////////////////////////////////
 
+    
+    
+
     }
+
+
+
+
+
+
+
+    //////end----------------------------------
 }

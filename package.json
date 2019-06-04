@@ -16,6 +16,7 @@
     "express-fileupload": "^1.1.4",
     "express-handlebars": "^3.1.0",
     "express-session": "^1.16.1",
+    "express-validator": "^5.3.1",
     "handlebars-dateformat": "^1.1.1",
     "jquery": "^3.4.1",
     "method-override": "^3.0.0",
