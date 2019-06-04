@@ -63,6 +63,12 @@ module.exports = {
 
         let errors = [];
         ///////////////////////////////////////
+        var regexp1=new RegExp("[^a-z|^A-Z]");
+
+        if(regexp1.test(req.body.surname))
+        {
+            errors.push({message:'Surname field can only be alphabet'})
+        }
         if(!req.body.surname)
         {
             errors.push({message:'Surname field is required'})
