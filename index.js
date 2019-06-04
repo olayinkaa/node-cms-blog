@@ -11,6 +11,8 @@ const session = require('express-session');
 const methodOverride = require('method-override');
 const {selectOption} = require('./config/customFunctions');
 
+const fileUpload = require('express-fileupload');
+
 var Handlebars = require('handlebars');
 
 // date format
@@ -51,6 +53,7 @@ app.use(session({
 
 app.use(flash());
 app.use(globalVariables);
+app.use(fileUpload());
 
 
 

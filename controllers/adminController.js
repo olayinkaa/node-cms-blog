@@ -3,6 +3,9 @@ const Post = require('../models/PostModel');
 
 // const Category = require('../models/CategoryModel').Category
 const Category = require('../models/CategoryModel')
+// ----------custom function import
+
+const {isEmpty} = require('../config/customFunctions');
 
 
 module.exports = {
@@ -12,6 +15,7 @@ module.exports = {
 
         res.render('admin/index')
     },
+    
     getPosts: (req,res)=>{
 
         mysort = {CreationDate:-1}
@@ -33,12 +37,30 @@ module.exports = {
         //for check box which give value of ON/OFF
         const commentsAllowed = req.body.allowComments? true : false;
 
+        // check for any input file
+        let filename = '';
+        console.log(req.files);
+        if(!isEmpty(req.files))
+        {
+            let file = req.files.uploadedfile;
+            filename = file.name;
+
+            let uploadDir = './public/uploads/';
+
+            file.mv(uploadDir+filename,(err)=>{
+
+                if(err)
+                    throw err;
+            });
+        }
+
         const newPost = new Post({
             title:req.body.title,
             description:req.body.description,
             status:req.body.status,
             allowComments:commentsAllowed,
-            category:req.body.category
+            category:req.body.category,
+            file : `/uploads/${filename}`
         })
 
         newPost.save()
@@ -51,7 +73,10 @@ module.exports = {
                     console.log("error in submission "+err)
                 });
 
+
     },
+
+
     
     createPost: async (req,res)=>{
 

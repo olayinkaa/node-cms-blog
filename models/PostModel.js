@@ -40,6 +40,11 @@ const PostSchema = new Schema({
             allowComments: {
                 type:Boolean,
                 default: false
+            },
+
+            file: {
+                type: String,
+                default: ''
             }
 
 });
