@@ -11,6 +11,8 @@ const session = require('express-session');
 const methodOverride = require('method-override');
 const {selectOption} = require('./config/customFunctions');
 
+const passport = require('passport');
+
 const fileUpload = require('express-fileupload');
 
 
@@ -54,9 +56,14 @@ app.use(session({
     resave: true
 }));
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(flash());
 app.use(globalVariables);
 app.use(fileUpload());
+
+
 
 
 

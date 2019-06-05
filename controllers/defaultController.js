@@ -30,6 +30,12 @@ module.exports = {
         res.send("You've successfully login")
     },
 
+    logOut: (req,res)=>{
+
+        req.logout();
+        res.redirect('/login');
+    },
+
     registerGet: (req,res)=>{
         res.render('default/register')
     },
@@ -63,23 +69,35 @@ module.exports = {
 
         let errors = [];
         ///////////////////////////////////////
-        var regexp1=new RegExp("[^a-z|^A-Z]");
+        const regexp1 =new RegExp("[^a-z|^A-Z]");
+        let mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
 
-        if(regexp1.test(req.body.surname))
-        {
-            errors.push({message:'Surname field can only be alphabet'})
-        }
+        let strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+
+    
         if(!req.body.surname)
         {
             errors.push({message:'Surname field is required'})
+        }
+        if(regexp1.test(req.body.surname))
+        {
+            errors.push({message:'Surname field can only be alphabet'})
         }
         if(!req.body.firstname)
         {
             errors.push({message:'firstname field is required'})
         }
+        if(regexp1.test(req.body.firstname))
+        {
+            errors.push({message:'firstname field can only be alphabet'})
+        }
         if(!req.body.email)
         {
             errors.push({message:'Email field is required'})
+        }
+        if(!strongRegex.test(req.body.password))
+        {
+            errors.push({message:'The password must be Minimum eight characters, at least one upper letter, one number and one special character'})
         }
         if(req.body.password !== req.body.confirmPassword)
         {

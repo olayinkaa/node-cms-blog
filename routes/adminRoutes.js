@@ -3,8 +3,10 @@ const router = express.Router();
 
 const adminController = require('../controllers/adminController');
 
+const {isUserAuthenticated} = require('../config/customFunctions');
 
-router.all('/*',(req,res,next) =>{
+
+router.all('/*', isUserAuthenticated ,(req,res,next) =>{
 
         req.app.locals.layout = 'admin'; //set your layout here
 
@@ -59,9 +61,6 @@ router.route('/category/delete/:id')
 router.route('/category/edit/:id')
         .get(adminController.editCategoriesGetRoute)
         .put(adminController.editCategoriesUpdateRoute)
-
-
-
 
 
 module.exports = router;
