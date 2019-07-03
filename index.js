@@ -75,7 +75,7 @@ app.set('view engine','hbs');
 
 */
 //set up second method with the default extension name
-app.engine('handlebars', hbs({defaultLayout: 'default',helpers:{select:selectOption}}));
+app.engine('handlebars', hbs({defaultLayout: 'default', helpers:{select:selectOption}}));
 app.set('view engine','handlebars');
 
 

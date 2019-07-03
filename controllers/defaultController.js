@@ -143,6 +143,26 @@ module.exports = {
 ////////////////////////////////
 
     
+    },
+
+    singlePost:(req,res)=>{
+
+            const id = req.params.id;
+
+            Post.findById(id).then(post=>{
+
+                if(!post)
+                {
+                    res.status(404).json({message:'No Post Found'});
+                }
+                else
+                {
+                    // res.status(200).json(post)
+                    res.render('default/singlepost',{
+                        post:post
+                    })
+                }
+            })
     }
     
 
